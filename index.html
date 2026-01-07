@@ -3,12 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Birthday Mikki 🖤</title>
+<title>Happy Birthday Miki 🖤</title>
 
 <style>
 *{
 box-sizing:border-box;
 }
+
 body{
 margin:0;
 min-height:100vh;
@@ -21,18 +22,46 @@ color:#fff;
 font-family:Arial, sans-serif;
 text-align:center;
 padding:40px 20px;
+overflow-x:hidden;
 }
+
+/* Fade-in on load */
+.fade-in{
+animation:fadeIn 1.8s ease forwards;
+opacity:0;
+}
+
+@keyframes fadeIn{
+to{
+opacity:1;
+}
+}
+
 h1{
 font-size:3rem;
 margin-bottom:10px;
 color:#ff4da6;
 text-shadow:0 0 10px rgba(255,77,166,0.6);
 }
+
 .subtitle{
 font-size:1.1rem;
-opacity:0.9;
+opacity:0.85;
 margin-bottom:40px;
 }
+
+/* Scroll reveal */
+.reveal{
+opacity:0;
+transform:translateY(40px);
+transition:all 1s ease;
+}
+
+.reveal.active{
+opacity:1;
+transform:translateY(0);
+}
+
 .card{
 max-width:720px;
 margin:0 auto 45px auto;
@@ -42,22 +71,32 @@ background:rgba(255,255,255,0.06);
 backdrop-filter:blur(10px);
 box-shadow:0 0 30px rgba(0,0,0,0.6);
 }
+
 .message{
 font-size:1.05rem;
-line-height:1.6;
+line-height:1.7;
 margin-bottom:25px;
 }
+
+.signature{
+margin-top:20px;
+font-style:italic;
+color:#ffb3d9;
+}
+
 .playlist-title{
 font-size:1.4rem;
 margin-bottom:10px;
 color:#9dffea;
 }
+
 iframe{
 width:100%;
 height:380px;
 border:none;
 border-radius:16px;
 }
+
 .footer{
 margin-top:40px;
 font-size:0.9rem;
@@ -68,53 +107,90 @@ opacity:0.7;
 
 <body>
 
+<div class="fade-in">
 <h1>Happy Birthday, Mikki 🎂🖤</h1>
-<p class="subtitle">A tiny corner of the internet made just for you.</p>
-
-<div class="card">
-<p class="message">
-Miki,<br><br>
-you have this magic the kind that changes rooms without trying.<br>
-You feel deeply, love fiercely, and still manage to be gentle with the world.<br><br>
-This little space holds pieces of you your moods, your moments, your music.<br>
-I hope you feel, safe, and endlessly loved 💫
-</p>
+<p class="subtitle">This little space exists just for you.</p>
 </div>
 
-<div class="card">
+<div class="card reveal">
+<p class="message">
+Happy Birthday, Mikki 💖<br><br>
+
+You’re one of those people who makes the world feel a little gentler just by being in it.  
+You’re sweet in the quiet ways, kind without trying, and so honest about what you feel that it’s honestly rare.  
+You don’t pretend. You don’t fake smiles. You feel deeply, and you let people see that — and that takes courage.<br><br>
+
+You care with your whole heart.  
+You love loudly, worry softly, and show up even when it’s hard.  
+Being around you feels safe.  
+It feels warm.  
+It feels like being understood without having to explain too much.<br><br>
+
+I hope this year gives you the same kindness you give others.  
+I hope you’re loved in ways that don’t make you doubt yourself.  
+I hope you laugh more, rest more, and remember how special you truly are.<br><br>
+
+Never stop being you.  
+The world genuinely needs your softness.<br><br>
+
+Happy birthday, beautiful soul ✨
+</p>
+
+<p class="signature">— Laila 💌</p>
+</div>
+
+<div class="card reveal">
 <div class="playlist-title">🌧️ For whenever you feel sad</div>
 <p class="message">
-For the nights when your heart feels heavy and words fall short.<br>
-No fixing. No rushing. Just feeling.<br>
+For the nights when your heart feels heavy and words fall short.  
+No fixing. No rushing. Just feeling.  
 Let this sit with you 🤍
 </p>
 <iframe src="https://open.spotify.com/embed/playlist/33IULRudkwRG3le4NF55vw" allow="encrypted-media"></iframe>
 </div>
 
-<div class="card">
-<div class="playlist-title">⚡ For whenever you feel happy or loud</div>
+<div class="card reveal">
+<div class="playlist-title">⚡ For whenever you feel happy</div>
 <p class="message">
-For the days you feel fearless, messy, alive.<br>
-For dancing alone and singing too loud.<br>
+For the days you feel fearless, messy, alive.  
+For dancing alone and singing too loud.  
 This one’s your spark ✨
 </p>
 <iframe src="https://open.spotify.com/embed/playlist/3MyBNGctLaSAEns9bMMG54" allow="encrypted-media"></iframe>
 </div>
 
-<div class="card">
+<div class="card reveal">
 <div class="playlist-title">🌙 For the classic everyday you</div>
 <p class="message">
-For calm drives, soft nights, and in-between moments.<br>
-Nothing heavy. Nothing loud.<br>
+For calm drives, soft nights, and in-between moments.  
+Nothing heavy. Nothing loud.  
 Just comfort 🖤
 </p>
 <iframe src="https://open.spotify.com/embed/playlist/4ZfcsQKvYPSveSGbhzPN2Q" allow="encrypted-media"></iframe>
 </div>
 
-<p class="footer">
-Made with love, music, and a lot of feelings 💌
-By  Tumhari Laila
+<p class="footer reveal">
+Made with love, music, and feelings that mattered
 </p>
+
+<script>
+const reveals = document.querySelectorAll(".reveal");
+
+function revealOnScroll(){
+for(let i=0;i<reveals.length;i++){
+const windowHeight = window.innerHeight;
+const revealTop = reveals[i].getBoundingClientRect().top;
+const revealPoint = 120;
+
+if(revealTop < windowHeight - revealPoint){
+reveals[i].classList.add("active");
+}
+}
+}
+
+window.addEventListener("scroll", revealOnScroll);
+revealOnScroll();
+</script>
 
 </body>
 </html>
