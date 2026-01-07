@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Birthday Miki 🖤</title>
+<title>Happy Birthday Mikki 🖤</title>
 
 <style>
 *{box-sizing:border-box;}
@@ -18,12 +18,11 @@ radial-gradient(circle at 50% 80%, rgba(150,255,0,0.1), transparent 40%),
 #000;
 color:#fff;
 font-family:Arial, sans-serif;
-text-align:center;
 padding:40px 20px;
 overflow-x:hidden;
 }
 
-/* STAR LAYER */
+/* STAR BACKGROUND */
 #stars{
 position:fixed;
 top:0;
@@ -31,52 +30,41 @@ left:0;
 width:100%;
 height:100%;
 z-index:-1;
-overflow:hidden;
 }
 
 .star{
 position:absolute;
 background:white;
 border-radius:50%;
-opacity:0.8;
-animation:float linear infinite;
-}
-
-@keyframes float{
-from{
-transform:translateY(110vh);
 opacity:0;
-}
-to{
-transform:translateY(-10vh);
-opacity:1;
-}
+animation:floatUp linear infinite, fadeStar 2s forwards;
 }
 
-/* Fade-in */
-.fade-in{
-animation:fadeIn 1.8s ease forwards;
-opacity:0;
+@keyframes floatUp{
+from{transform:translateY(110vh);}
+to{transform:translateY(-10vh);}
 }
 
-@keyframes fadeIn{
-to{opacity:1;}
+@keyframes fadeStar{
+to{opacity:0.8;}
 }
 
+/* HEAD */
 h1{
+text-align:center;
 font-size:3rem;
-margin-bottom:10px;
 color:#ff4da6;
 text-shadow:0 0 10px rgba(255,77,166,0.6);
+margin-bottom:10px;
 }
 
 .subtitle{
-font-size:1.1rem;
+text-align:center;
 opacity:0.85;
 margin-bottom:40px;
 }
 
-/* Scroll reveal */
+/* REVEAL */
 .reveal{
 opacity:0;
 transform:translateY(40px);
@@ -88,32 +76,81 @@ opacity:1;
 transform:translateY(0);
 }
 
+/* CARD */
 .card{
-max-width:720px;
+max-width:900px;
 margin:0 auto 45px auto;
-padding:25px;
-border-radius:20px;
+padding:30px;
+border-radius:22px;
 background:rgba(255,255,255,0.06);
-backdrop-filter:blur(10px);
+backdrop-filter:blur(12px);
 box-shadow:0 0 30px rgba(0,0,0,0.6);
 }
 
-.message{
-font-size:1.05rem;
-line-height:1.7;
-margin-bottom:25px;
+/* MESSAGE + MUSIC LAYOUT */
+.message-wrap{
+display:flex;
+gap:30px;
+align-items:center;
 }
 
+/* TEXT */
+.text-side{
+flex:2;
+line-height:1.7;
+font-size:1.05rem;
+}
+
+/* MUSIC */
+.music-side{
+flex:1;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+opacity:0;
+animation:fadeInBtn 3s ease forwards;
+animation-delay:1.5s;
+}
+
+@keyframes fadeInBtn{
+to{opacity:1;}
+}
+
+.music-text{
+font-size:0.9rem;
+opacity:0.8;
+margin-bottom:12px;
+}
+
+#playBtn{
+padding:14px 26px;
+border-radius:30px;
+border:none;
+background:#ff4da6;
+color:#fff;
+font-size:1rem;
+cursor:pointer;
+box-shadow:0 0 18px rgba(255,77,166,0.8);
+transition:all 0.3s ease;
+}
+
+#playBtn:hover{
+transform:scale(1.06);
+}
+
+/* SIGNATURE */
 .signature{
 margin-top:20px;
 font-style:italic;
 color:#ffb3d9;
 }
 
+/* PLAYLISTS */
 .playlist-title{
 font-size:1.4rem;
-margin-bottom:10px;
 color:#9dffea;
+margin-bottom:10px;
 }
 
 iframe{
@@ -123,132 +160,117 @@ border:none;
 border-radius:16px;
 }
 
+/* FOOTER */
 .footer{
-margin-top:40px;
-font-size:0.9rem;
+text-align:center;
 opacity:0.7;
+margin-top:40px;
 }
 
-/* Music button */
-#musicBtn{
-position:fixed;
-bottom:25px;
-right:25px;
-width:58px;
-height:58px;
-border-radius:50%;
-border:none;
-background:#ff4da6;
-color:#fff;
-font-size:1.4rem;
-cursor:pointer;
-box-shadow:0 0 18px rgba(255,77,166,0.8);
-animation:pulse 2s infinite;
-z-index:1000;
+/* MOBILE PERFECT */
+@media (max-width: 768px){
+.message-wrap{
+flex-direction:column;
+text-align:left;
 }
-
-@keyframes pulse{
-0%{transform:scale(1);}
-50%{transform:scale(1.1);}
-100%{transform:scale(1);}
+.music-side{
+width:100%;
+margin-top:20px;
+}
+h1{
+font-size:2.3rem;
+}
 }
 </style>
 </head>
 
 <body>
 
-<!-- Floating stars -->
 <div id="stars"></div>
 
-<!-- Music button -->
-<button id="musicBtn" title="Tap to play music">🎵</button>
-
-<div class="fade-in">
 <h1>Happy Birthday, Mikki 🎂🖤</h1>
 <p class="subtitle">This little space exists just for you.</p>
+
+<div class="card reveal">
+  <div class="message-wrap">
+    
+    <div class="text-side">
+      Happy Birthday, Mikki 💖<br><br>
+
+      You’re one of those people who makes the world feel a little gentler just by being in it.  
+      You’re sweet in the quiet ways, kind without trying, and so honest about what you feel that it’s honestly rare.  
+      You don’t pretend. You don’t fake smiles. You feel deeply, and you let people see that — and that takes courage.<br><br>
+
+      You care with your whole heart.  
+      You love loudly, worry softly, and show up even when it’s hard.  
+      Being around you feels safe.  
+      It feels warm.  
+      It feels like being understood without having to explain too much.<br><br>
+
+      I hope this year gives you the same kindness you give others.  
+      I hope you’re loved in ways that don’t make you doubt yourself.  
+      I hope you laugh more, rest more, and remember how special you truly are.<br><br>
+
+      Never stop being you.  
+      The world genuinely needs your softness.<br><br>
+
+      Happy birthday, beautiful soul ✨
+      <div class="signature">— Laila 💌</div>
+    </div>
+
+    <div class="music-side">
+      <div class="music-text">play this when you’re ready 🤍</div>
+      <button id="playBtn">▶ UMASA</button>
+    </div>
+
+  </div>
 </div>
 
 <div class="card reveal">
-<p class="message">
-Happy Birthday, Mikki 💖<br><br>
-
-You’re one of those people who makes the world feel a little gentler just by being in it.  
-You’re sweet in the quiet ways, kind without trying, and so honest about what you feel that it’s honestly rare.  
-You don’t pretend. You don’t fake smiles. You feel deeply, and you let people see that — and that takes courage.<br><br>
-
-You care with your whole heart.  
-You love loudly, worry softly, and show up even when it’s hard.  
-Being around you feels safe.  
-It feels warm.  
-It feels like being understood without having to explain too much.<br><br>
-
-I hope this year gives you the same kindness you give others.  
-I hope you’re loved in ways that don’t make you doubt yourself.  
-I hope you laugh more, rest more, and remember how special you truly are.<br><br>
-
-Never stop being you.  
-The world genuinely needs your softness.<br><br>
-
-Happy birthday, beautiful soul ✨
-</p>
-
-<p class="signature">— Laila 💌</p>
+  <div class="playlist-title">🌧️ For whenever you feel sad</div>
+  <iframe src="https://open.spotify.com/embed/playlist/33IULRudkwRG3le4NF55vw"></iframe>
 </div>
 
 <div class="card reveal">
-<div class="playlist-title">🌧️ For whenever you feel sad</div>
-<p class="message">
-For the nights when your heart feels heavy.  
-Let this sit with you 🤍
-</p>
-<iframe src="https://open.spotify.com/embed/playlist/33IULRudkwRG3le4NF55vw"></iframe>
+  <div class="playlist-title">⚡ For whenever you feel happy</div>
+  <iframe src="https://open.spotify.com/embed/playlist/3MyBNGctLaSAEns9bMMG54"></iframe>
 </div>
 
 <div class="card reveal">
-<div class="playlist-title">⚡ For whenever you feel happy</div>
-<p class="message">
-For dancing alone and feeling alive ✨
-</p>
-<iframe src="https://open.spotify.com/embed/playlist/3MyBNGctLaSAEns9bMMG54"></iframe>
-</div>
-
-<div class="card reveal">
-<div class="playlist-title">🌙 For the classic everyday you</div>
-<p class="message">
-Just comfort. Just you 🖤
-</p>
-<iframe src="https://open.spotify.com/embed/playlist/4ZfcsQKvYPSveSGbhzPN2Q"></iframe>
+  <div class="playlist-title">🌙 For the classic everyday you</div>
+  <iframe src="https://open.spotify.com/embed/playlist/4ZfcsQKvYPSveSGbhzPN2Q"></iframe>
 </div>
 
 <p class="footer reveal">
 Made with love, music, and feelings that mattered
 </p>
 
-<!-- Hidden Spotify player -->
+<!-- HIDDEN MUSIC -->
 <iframe
 id="bgMusic"
 src="https://open.spotify.com/embed/track/7N38QIa9VwYGZvUrGGDVWO"
 width="0"
-height="0">
+height="0"
+allow="encrypted-media">
 </iframe>
 
 <script>
 // stars
 const stars = document.getElementById("stars");
-for(let i=0;i<60;i++){
-const star = document.createElement("div");
-star.className = "star";
-const size = Math.random()*2 + 1;
-star.style.width = size + "px";
-star.style.height = size + "px";
-star.style.left = Math.random()*100 + "%";
-star.style.animationDuration = Math.random()*15 + 10 + "s";
-star.style.animationDelay = Math.random()*10 + "s";
+for(let i=0;i<70;i++){
+const star=document.createElement("div");
+star.className="star";
+const size=Math.random()*2+1;
+star.style.width=size+"px";
+star.style.height=size+"px";
+star.style.left=Math.random()*100+"%";
+star.style.animationDuration=Math.random()*15+10+"s";
+star.style.animationDelay=Math.random()*3+"s";
 stars.appendChild(star);
 }
 
-// scroll reveal
-const reveals = document.querySelectorAll(".reveal");
+// reveal
+const reveals=document.querySelectorAll(".reveal");
 function revealOnScroll(){
 reveals.forEach(el=>{
 if(el.getBoundingClientRect().top < window.innerHeight - 120){
@@ -260,12 +282,12 @@ window.addEventListener("scroll", revealOnScroll);
 revealOnScroll();
 
 // music
-const musicBtn = document.getElementById("musicBtn");
-const bgMusic = document.getElementById("bgMusic");
-musicBtn.addEventListener("click", ()=>{
-bgMusic.src += "?autoplay=1";
-musicBtn.innerHTML="💖";
-musicBtn.style.background="#9dffea";
+const btn=document.getElementById("playBtn");
+const music=document.getElementById("bgMusic");
+btn.addEventListener("click",()=>{
+music.src += "?autoplay=1";
+btn.innerHTML="💖 playing";
+btn.style.background="#9dffea";
 });
 </script>
 
