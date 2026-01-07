@@ -3,10 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Birthday Mikki 🖤</title>
+<title>Happy Birthday Miki 🖤</title>
 
 <style>
-*{box-sizing:border-box;}
+*{
+box-sizing:border-box;
+}
 
 body{
 margin:0;
@@ -18,82 +20,37 @@ radial-gradient(circle at 50% 80%, rgba(150,255,0,0.1), transparent 40%),
 #000;
 color:#fff;
 font-family:Arial, sans-serif;
+text-align:center;
 padding:40px 20px;
 overflow-x:hidden;
 }
 
-/* FLOATING STARS */
-#stars{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-z-index:-2;
-}
-
-.star{
-position:absolute;
-background:white;
-border-radius:50%;
-opacity:0.8;
-animation:floatUp linear infinite;
-}
-
-@keyframes floatUp{
-from{transform:translateY(110vh);}
-to{transform:translateY(-10vh);}
-}
-
-/* SHOOTING STARS */
-.shooting-star{
-position:fixed;
-top:-10px;
-width:120px;
-height:2px;
-background:linear-gradient(90deg, white, transparent);
+/* Fade-in on load */
+.fade-in{
+animation:fadeIn 1.8s ease forwards;
 opacity:0;
-animation:shoot 1.2s linear forwards;
-z-index:-1;
 }
 
-@keyframes shoot{
-0%{opacity:0;transform:translateX(0) translateY(0);}
-10%{opacity:1;}
-100%{opacity:0;transform:translateX(600px) translateY(300px);}
+@keyframes fadeIn{
+to{
+opacity:1;
+}
 }
 
-/* CONFETTI */
-.confetti{
-position:fixed;
-width:8px;
-height:14px;
-opacity:0.9;
-animation:confettiFall linear forwards;
-z-index:5;
-}
-
-@keyframes confettiFall{
-from{transform:translateY(-10vh) rotate(0deg);}
-to{transform:translateY(110vh) rotate(360deg);}
-}
-
-/* HEAD */
 h1{
-text-align:center;
 font-size:3rem;
+margin-bottom:10px;
 color:#ff4da6;
 text-shadow:0 0 10px rgba(255,77,166,0.6);
-margin-bottom:10px;
 }
 
 .subtitle{
-text-align:center;
+font-size:1.1rem;
 opacity:0.85;
 margin-bottom:40px;
 }
 
-/* REVEAL */
+/* Scroll reveal */
 .reveal{
 opacity:0;
 transform:translateY(40px);
@@ -105,21 +62,20 @@ opacity:1;
 transform:translateY(0);
 }
 
-/* CARD */
 .card{
-max-width:900px;
+max-width:720px;
 margin:0 auto 45px auto;
-padding:30px;
-border-radius:22px;
+padding:25px;
+border-radius:20px;
 background:rgba(255,255,255,0.06);
-backdrop-filter:blur(12px);
+backdrop-filter:blur(10px);
 box-shadow:0 0 30px rgba(0,0,0,0.6);
 }
 
-/* MESSAGE */
 .message{
-line-height:1.7;
 font-size:1.05rem;
+line-height:1.7;
+margin-bottom:25px;
 }
 
 .signature{
@@ -128,91 +84,10 @@ font-style:italic;
 color:#ffb3d9;
 }
 
-/* CAKE */
-.cake-wrap{
-display:flex;
-flex-direction:column;
-align-items:center;
-gap:12px;
-cursor:pointer;
-}
-
-.make-wish{
-font-size:1.1rem;
-opacity:0.9;
-letter-spacing:1px;
-}
-
-.cake{
-position:relative;
-width:140px;
-height:90px;
-background:#ff7eb3;
-border-radius:0 0 20px 20px;
-box-shadow:0 0 20px rgba(255,126,179,0.6);
-}
-
-.cake::before{
-content:"";
-position:absolute;
-top:-30px;
-left:0;
-width:140px;
-height:30px;
-background:#ffc1dc;
-border-radius:20px 20px 0 0;
-}
-
-.candle{
-position:absolute;
-top:-55px;
-width:6px;
-height:30px;
-background:#fff;
-border-radius:3px;
-}
-
-.candle:nth-child(1){left:40px;}
-.candle:nth-child(2){left:67px;}
-.candle:nth-child(3){left:94px;}
-
-.flame{
-position:absolute;
-top:-12px;
-left:-4px;
-width:14px;
-height:14px;
-background:radial-gradient(circle, #ffd700 40%, #ff8c00 60%);
-border-radius:50%;
-animation:flicker 0.6s infinite;
-}
-
-@keyframes flicker{
-0%{transform:scale(1);}
-50%{transform:scale(1.1);}
-100%{transform:scale(1);}
-}
-
-.blown .flame{
-display:none;
-}
-
-.wish-text{
-margin-top:10px;
-font-size:0.9rem;
-opacity:0;
-transition:opacity 1s ease;
-}
-
-.blown + .wish-text{
-opacity:1;
-}
-
-/* PLAYLISTS */
 .playlist-title{
 font-size:1.4rem;
-color:#9dffea;
 margin-bottom:10px;
+color:#9dffea;
 }
 
 iframe{
@@ -222,149 +97,101 @@ border:none;
 border-radius:16px;
 }
 
-/* FOOTER */
 .footer{
-text-align:center;
-opacity:0.7;
 margin-top:40px;
-}
-
-/* MOBILE */
-@media (max-width:768px){
-h1{font-size:2.3rem;}
+font-size:0.9rem;
+opacity:0.7;
 }
 </style>
 </head>
 
 <body>
 
-<div id="stars"></div>
-
+<div class="fade-in">
 <h1>Happy Birthday, Mikki 🎂🖤</h1>
 <p class="subtitle">This little space exists just for you.</p>
-
-<div class="card reveal">
-  <div class="message">
-    Happy Birthday, Mikki 💖<br><br>
-
-    You’re one of those people who makes the world feel a little gentler just by being in it.  
-    You’re sweet in the quiet ways, kind without trying, and so honest about what you feel that it’s honestly rare.  
-    You don’t pretend. You don’t fake smiles. You feel deeply, and you let people see that — and that takes courage.<br><br>
-
-    You care with your whole heart.  
-    You love loudly, worry softly, and show up even when it’s hard.  
-    Being around you feels safe.  
-    It feels warm.  
-    It feels like being understood without having to explain too much.<br><br>
-
-    I hope this year gives you the same kindness you give others.  
-    I hope you’re loved in ways that don’t make you doubt yourself.  
-    I hope you laugh more, rest more, and remember how special you truly are.<br><br>
-
-    Never stop being you.  
-    The world genuinely needs your softness.<br><br>
-
-    Happy birthday, beautiful soul ✨
-    <div class="signature">— Laila 💌</div>
-  </div>
 </div>
 
 <div class="card reveal">
-  <div class="cake-wrap" id="cakeArea">
-    <div class="make-wish">make a wish ✨</div>
+<p class="message">
+Happy Birthday, Mikki 💖<br><br>
 
-    <div class="cake" id="cake">
-      <div class="candle"><div class="flame"></div></div>
-      <div class="candle"><div class="flame"></div></div>
-      <div class="candle"><div class="flame"></div></div>
-    </div>
+You’re one of those people who makes the world feel a little gentler just by being in it.  
+You’re sweet in the quiet ways, kind without trying, and so honest about what you feel that it’s honestly rare.  
+You don’t pretend. You don’t fake smiles. You feel deeply, and you let people see that — and that takes courage.<br><br>
 
-    <div class="wish-text">💨 candles blown… wish sent to the stars</div>
-  </div>
+You care with your whole heart.  
+You love loudly, worry softly, and show up even when it’s hard.  
+Being around you feels safe.  
+It feels warm.  
+It feels like being understood without having to explain too much.<br><br>
+
+I hope this year gives you the same kindness you give others.  
+I hope you’re loved in ways that don’t make you doubt yourself.  
+I hope you laugh more, rest more, and remember how special you truly are.<br><br>
+
+Never stop being you.  
+The world genuinely needs your softness.<br><br>
+
+Happy birthday, beautiful soul ✨
+</p>
+
+<p class="signature">— Laila 💌</p>
 </div>
 
 <div class="card reveal">
-  <div class="playlist-title">🌧️ For whenever you feel sad</div>
-  <iframe src="https://open.spotify.com/embed/playlist/33IULRudkwRG3le4NF55vw"></iframe>
+<div class="playlist-title">🌧️ For whenever you feel sad</div>
+<p class="message">
+For the nights when your heart feels heavy and words fall short.  
+No fixing. No rushing. Just feeling.  
+Let this sit with you 🤍
+</p>
+<iframe src="https://open.spotify.com/embed/playlist/33IULRudkwRG3le4NF55vw" allow="encrypted-media"></iframe>
 </div>
 
 <div class="card reveal">
-  <div class="playlist-title">⚡ For whenever you feel happy</div>
-  <iframe src="https://open.spotify.com/embed/playlist/3MyBNGctLaSAEns9bMMG54"></iframe>
+<div class="playlist-title">⚡ For whenever you feel happy</div>
+<p class="message">
+For the days you feel fearless, messy, alive.  
+For dancing alone and singing too loud.  
+This one’s your spark ✨
+</p>
+<iframe src="https://open.spotify.com/embed/playlist/3MyBNGctLaSAEns9bMMG54" allow="encrypted-media"></iframe>
 </div>
 
 <div class="card reveal">
-  <div class="playlist-title">🌙 For the classic everyday you</div>
-  <iframe src="https://open.spotify.com/embed/playlist/4ZfcsQKvYPSveSGbhzPN2Q"></iframe>
+<div class="playlist-title">🌙 For the classic everyday you</div>
+<p class="message">
+For calm drives, soft nights, and in-between moments.  
+Nothing heavy. Nothing loud.  
+Just comfort 🖤
+</p>
+<iframe src="https://open.spotify.com/embed/playlist/4ZfcsQKvYPSveSGbhzPN2Q" allow="encrypted-media"></iframe>
 </div>
 
 <p class="footer reveal">
-Made with love, magic, and feelings that mattered
+Made with love, music, and feelings that mattered
 </p>
 
 <script>
-// floating stars
-const stars=document.getElementById("stars");
-for(let i=0;i<80;i++){
-const s=document.createElement("div");
-s.className="star";
-const size=Math.random()*2+1;
-s.style.width=size+"px";
-s.style.height=size+"px";
-s.style.left=Math.random()*100+"%";
-s.style.animationDuration=Math.random()*20+10+"s";
-stars.appendChild(s);
-}
+const reveals = document.querySelectorAll(".reveal");
 
-// shooting stars
-function shoot(){
-const s=document.createElement("div");
-s.className="shooting-star";
-s.style.left=Math.random()*40+"%";
-s.style.top=Math.random()*30+"%";
-document.body.appendChild(s);
-setTimeout(()=>s.remove(),1200);
-}
-setInterval(shoot,4500);
-
-// reveal
-const reveals=document.querySelectorAll(".reveal");
 function revealOnScroll(){
-reveals.forEach(el=>{
-if(el.getBoundingClientRect().top < window.innerHeight - 120){
-el.classList.add("active");
+for(let i=0;i<reveals.length;i++){
+const windowHeight = window.innerHeight;
+const revealTop = reveals[i].getBoundingClientRect().top;
+const revealPoint = 120;
+
+if(revealTop < windowHeight - revealPoint){
+reveals[i].classList.add("active");
 }
-});
 }
-window.addEventListener("scroll",revealOnScroll);
+}
+
+window.addEventListener("scroll", revealOnScroll);
 revealOnScroll();
-
-// confetti
-let confettiThrown=false;
-function throwConfetti(){
-if(confettiThrown) return;
-confettiThrown=true;
-
-for(let i=0;i<120;i++){
-const c=document.createElement("div");
-c.className="confetti";
-c.style.left=Math.random()*100+"%";
-c.style.background=`hsl(${Math.random()*360},100%,70%)`;
-c.style.animationDuration=Math.random()*3+2+"s";
-document.body.appendChild(c);
-setTimeout(()=>c.remove(),5000);
-}
-}
-
-// cake blow
-const cake=document.getElementById("cake");
-cake.addEventListener("click",()=>{
-cake.classList.add("blown");
-throwConfetti();
-});
 </script>
 
 </body>
 </html>
 
-</html>
