@@ -6,9 +6,7 @@
 <title>Happy Birthday Miki 🖤</title>
 
 <style>
-*{
-box-sizing:border-box;
-}
+*{box-sizing:border-box;}
 
 body{
 margin:0;
@@ -25,16 +23,44 @@ padding:40px 20px;
 overflow-x:hidden;
 }
 
-/* Fade-in on load */
+/* STAR LAYER */
+#stars{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:-1;
+overflow:hidden;
+}
+
+.star{
+position:absolute;
+background:white;
+border-radius:50%;
+opacity:0.8;
+animation:float linear infinite;
+}
+
+@keyframes float{
+from{
+transform:translateY(110vh);
+opacity:0;
+}
+to{
+transform:translateY(-10vh);
+opacity:1;
+}
+}
+
+/* Fade-in */
 .fade-in{
 animation:fadeIn 1.8s ease forwards;
 opacity:0;
 }
 
 @keyframes fadeIn{
-to{
-opacity:1;
-}
+to{opacity:1;}
 }
 
 h1{
@@ -102,10 +128,40 @@ margin-top:40px;
 font-size:0.9rem;
 opacity:0.7;
 }
+
+/* Music button */
+#musicBtn{
+position:fixed;
+bottom:25px;
+right:25px;
+width:58px;
+height:58px;
+border-radius:50%;
+border:none;
+background:#ff4da6;
+color:#fff;
+font-size:1.4rem;
+cursor:pointer;
+box-shadow:0 0 18px rgba(255,77,166,0.8);
+animation:pulse 2s infinite;
+z-index:1000;
+}
+
+@keyframes pulse{
+0%{transform:scale(1);}
+50%{transform:scale(1.1);}
+100%{transform:scale(1);}
+}
 </style>
 </head>
 
 <body>
+
+<!-- Floating stars -->
+<div id="stars"></div>
+
+<!-- Music button -->
+<button id="musicBtn" title="Tap to play music">🎵</button>
 
 <div class="fade-in">
 <h1>Happy Birthday, Mikki 🎂🖤</h1>
@@ -142,54 +198,75 @@ Happy birthday, beautiful soul ✨
 <div class="card reveal">
 <div class="playlist-title">🌧️ For whenever you feel sad</div>
 <p class="message">
-For the nights when your heart feels heavy and words fall short.  
-No fixing. No rushing. Just feeling.  
+For the nights when your heart feels heavy.  
 Let this sit with you 🤍
 </p>
-<iframe src="https://open.spotify.com/embed/playlist/33IULRudkwRG3le4NF55vw" allow="encrypted-media"></iframe>
+<iframe src="https://open.spotify.com/embed/playlist/33IULRudkwRG3le4NF55vw"></iframe>
 </div>
 
 <div class="card reveal">
 <div class="playlist-title">⚡ For whenever you feel happy</div>
 <p class="message">
-For the days you feel fearless, messy, alive.  
-For dancing alone and singing too loud.  
-This one’s your spark ✨
+For dancing alone and feeling alive ✨
 </p>
-<iframe src="https://open.spotify.com/embed/playlist/3MyBNGctLaSAEns9bMMG54" allow="encrypted-media"></iframe>
+<iframe src="https://open.spotify.com/embed/playlist/3MyBNGctLaSAEns9bMMG54"></iframe>
 </div>
 
 <div class="card reveal">
 <div class="playlist-title">🌙 For the classic everyday you</div>
 <p class="message">
-For calm drives, soft nights, and in-between moments.  
-Nothing heavy. Nothing loud.  
-Just comfort 🖤
+Just comfort. Just you 🖤
 </p>
-<iframe src="https://open.spotify.com/embed/playlist/4ZfcsQKvYPSveSGbhzPN2Q" allow="encrypted-media"></iframe>
+<iframe src="https://open.spotify.com/embed/playlist/4ZfcsQKvYPSveSGbhzPN2Q"></iframe>
 </div>
 
 <p class="footer reveal">
 Made with love, music, and feelings that mattered
 </p>
 
+<!-- Hidden Spotify player -->
+<iframe
+id="bgMusic"
+src="https://open.spotify.com/embed/track/7N38QIa9VwYGZvUrGGDVWO"
+width="0"
+height="0">
+</iframe>
+
 <script>
+// stars
+const stars = document.getElementById("stars");
+for(let i=0;i<60;i++){
+const star = document.createElement("div");
+star.className = "star";
+const size = Math.random()*2 + 1;
+star.style.width = size + "px";
+star.style.height = size + "px";
+star.style.left = Math.random()*100 + "%";
+star.style.animationDuration = Math.random()*15 + 10 + "s";
+star.style.animationDelay = Math.random()*10 + "s";
+stars.appendChild(star);
+}
+
+// scroll reveal
 const reveals = document.querySelectorAll(".reveal");
-
 function revealOnScroll(){
-for(let i=0;i<reveals.length;i++){
-const windowHeight = window.innerHeight;
-const revealTop = reveals[i].getBoundingClientRect().top;
-const revealPoint = 120;
-
-if(revealTop < windowHeight - revealPoint){
-reveals[i].classList.add("active");
+reveals.forEach(el=>{
+if(el.getBoundingClientRect().top < window.innerHeight - 120){
+el.classList.add("active");
 }
+});
 }
-}
-
 window.addEventListener("scroll", revealOnScroll);
 revealOnScroll();
+
+// music
+const musicBtn = document.getElementById("musicBtn");
+const bgMusic = document.getElementById("bgMusic");
+musicBtn.addEventListener("click", ()=>{
+bgMusic.src += "?autoplay=1";
+musicBtn.innerHTML="💖";
+musicBtn.style.background="#9dffea";
+});
 </script>
 
 </body>
